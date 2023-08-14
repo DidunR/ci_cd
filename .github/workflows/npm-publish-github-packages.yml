@@ -1,0 +1,26 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: CI
+
+on:
+  push:
+    branches:  
+       - main
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Node version
+        uses: actions/setup-node@v3
+        with:
+         node-version: 16
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+         repository: Pasechnyktanya/dofd-05-node-Pasechnyktanya-main
+         ref: main
+      - name: Install dependencies
+        run: "npm install"
